@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function () {
+    Route::post('login', [AdminController::class, 'login']);
+    Route::middleware('auth:admins')->group(function () {
+        Route::delete('logout', [AdminController::class, 'logout']);
+        Route::get('profile', [AdminController::class, 'me']);
+    });
 });

@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'api',
+        'guard' => 'admins',
         'passwords' => 'admins',
     ],
 
@@ -41,7 +41,7 @@ return [
             'provider' => 'admins',
         ],
 
-        'api' => [
+        'admins' => [
             'driver' => 'jwt',
             'provider' => 'admins',
             'hash' => false,
@@ -93,8 +93,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

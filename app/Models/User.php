@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Builders\AdminBuilder;
+use App\Builders\UserBuilder;
 use App\Traits\HasUuid;
 use App\Traits\OverridesBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,11 +11,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Admin extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable, SoftDeletes, HasUuid, OverridesBuilder;
 
-    protected $table = 'admins';
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -59,7 +59,7 @@ class Admin extends Authenticatable implements JWTSubject
 
     public function provideCustomBuilder()
     {
-        return AdminBuilder::class;
+        return UserBuilder::class;
     }
 
     /**
